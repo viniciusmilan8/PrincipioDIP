@@ -1,0 +1,7 @@
+*.json
+*.dll
+*.exe
+*.pdb
+/obj
+/obj/Debug
+/obj

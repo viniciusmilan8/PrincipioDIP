@@ -1,34 +1,18 @@
-﻿// Exemplo - DIP(Legado)
+﻿using System;
 
-enum State { On, Off }
-
-class Lamp
+namespace PrincipioDIP
 {
-    State State;
-
-    public Lamp(State State)
+    class Program
     {
-        this.State = State;
-    }
+        static void Main(string[] args)
+        {
+            IDevice lamp = new Lamp(State.Off);
+            Switch interruptor = new Switch(lamp);
 
-    public void Operate()
-    {
-        State = State == State.On ? State.Off : State.On;
-        Console.WriteLine("Luz " + (State == State.On ? "Ligada" : "Desligada"));
-    }
-}
+            interruptor.Press(); // Luz Ligada
+            interruptor.Press(); // Luz Desligada
 
-class Switch
-{
-    private Lamp lamp;
-
-    public Switch(Lamp device)
-    {
-        this.lamp = device;
-    }
-
-    public void Press()
-    {
-        lamp.Operate();
+            Console.ReadLine();
+        }
     }
 }
